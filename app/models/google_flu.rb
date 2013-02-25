@@ -1,0 +1,2 @@
+class GoogleFlu < Component
+end

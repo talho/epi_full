@@ -1,0 +1,22 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("elements", "1", {packages : ["newsshow"]});
+  google.setOnLoadCallback(function(){
+    var container = document.getElementById('<%= component.class.to_s + "_" + component.id.to_s %>')
+    new google.elements.NewsShow(container, {
+      "format": "300x250",
+      linkTarget: '_blank',
+      "queryList" : [
+        {
+          "title" : "Public Health",
+          "q" : "Public Health"
+        },
+        {
+          "title" : "Health",
+          "topic" : "m"
+        }
+      ]
+    });
+  });
+</script>
+<div id="<%= component.class.to_s + '_' + component.id.to_s %>"></div>

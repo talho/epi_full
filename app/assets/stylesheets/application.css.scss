@@ -11,18 +11,11 @@
  *= require_self
  *= require_tree .
 */
-.brand {
-  float: left;
-  padding-right: 8px;
+
+#container{
+  margin-top: 35px;
 }
-ul.nav {
-  list-style: none;
-  margin: 0 0 2em;
-  padding: 0;
-}
-ul.nav li {
-  display: inline;
-}
+
 #flash_notice, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
@@ -34,4 +27,43 @@ ul.nav li {
 #flash_alert {
   background-color: #FCC;
   border: solid 1px #C66;
+}
+
+.navbar-fixed-floating{
+  position: fixed;
+  right: 250px;
+}
+
+
+.navbar-fixed-floating-top{
+  top: 0px;
+}
+
+.navbar-fixed-floating-top .navbar-inner{
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top: 0px;
+}
+
+.navbar-fixed-floating-bottom .navbar-inner{
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom: 0px;
+}
+
+.accordion-buttons{
+  width: 400px;
+}
+
+.accordion-buttons .accordion-group{
+  border: 0px;
+}
+
+.accordion-buttons .accordion-inner{
+  padding: 0px;
+  border: 0px;
+}
+
+.accordion-buttons .btn{
+  display: block;
 }

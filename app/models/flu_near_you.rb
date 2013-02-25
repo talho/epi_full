@@ -1,0 +1,2 @@
+class FluNearYou < Component
+end

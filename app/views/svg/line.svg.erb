@@ -1,0 +1,46 @@
+
+<%# We're going to do some ruby here because we're coming from a generic controller. %>
+<% y_vals = @data[:points].map{|p| p[:y]}
+   y_min = @data[:min] || y_vals.min.floor
+   y_max = @data[:max] || y_vals.max.ceil
+   y_range = y_max - y_min
+   y_run = y_range.to_f/5.0
+   set_length = @data[:points].length
+   x_num = [7,8,9,10,11,12,13].sort_by{|x| [set_length % x, x]}.first
+   x_label_factor = [set_length/x_num, 1].max
+   x_offset = (set_length - 1) % x_label_factor
+   x_num = (set_length - x_offset) / x_label_factor + 1
+   x_run = 600.0/([set_length-1, 1].max).to_f
+   path = [] %>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 665 240">
+  <defs>
+    <%= stylesheet_link_tag 'svg', xmlns: "http://www.w3.org/1999/xhtml" %>
+  </defs>
+  <g transform="translate(40,10)">
+    <g class="axis">
+      <% x_num.times do |i| %>
+        <% x = x_offset*x_run + i*x_run*x_label_factor %>
+        <line class="rule" x1="<%= x %>" y1="0" x2="<%= x %>" y2="200"/>
+        <text x="<%= x %>" y="215" text-anchor="middle"><%= (@data[:points][x_offset + i*x_label_factor] || {})[:x] %></text>
+      <% end %>
+      <% 6.times do |i| %>
+        <% y = 200 - 200*(y_run*(i)).ceil/y_range.to_f%>
+        <line class="rule" x1="0" y1="<%= y %>" x2="600" y2="<%= y %>"/>
+        <text x="-8" y="<%= y %>" text-anchor="end" dy=".3em"><%= (y_run*(i) + y_min).ceil %></text>
+      <% end %>
+      <line class="y" x1="0" x2="0" y1="0" y2="200"/>
+      <line class="x" x1="0" x2="600" y1="200" y2="200"/>
+    </g>
+    <g class="chart">
+      <% @data[:points].each.with_index do |point, i| %>
+        <% path << {:x => x_run * i, :y => 200 - 200.0*((point[:y] - y_min)/y_range.to_f)} %>
+      <% end %>
+      <path class="trace" d="M <%= path.map{|p| p[:x].to_s + ' ' + p[:y].to_s }.join(' ') %>"></path>
+      <g class="points">
+        <% path.each do |coord| %>
+          <circle class="point" cx="<%= coord[:x] %>" cy="<%= coord[:y] %>" r="3.5" ></circle>
+        <% end %>
+      </g>
+    </g>
+  </g>
+</svg>

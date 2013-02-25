@@ -1,0 +1,6 @@
+<title><%= @template.title %></title>
+<% @template.components.each do |component| %>
+  <div>
+    <%= render :partial => "component", :locals => {component: component} %>
+  </div>
+<% end %>

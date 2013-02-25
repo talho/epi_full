@@ -1,0 +1,22 @@
+// Place all the styles related to the templates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.multi-column-row{
+  display: table;
+  table-layout: fixed;
+  border-spacing: 2px;
+}
+
+div.multi-column-row > div {
+  display: table-cell;
+  width: 1%;
+  border: 1px #DDF solid;
+  border-radius: 5px;
+  background: #F8F8FF;
+  padding: 5px;
+}
+
+object{
+  max-width: 800px;
+}

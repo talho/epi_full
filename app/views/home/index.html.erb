@@ -1,4 +1,42 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+<h1><%= current_user.name %></h1>
+
+<div class="accordion accordion-buttons" id="categories">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle btn btn-primary" data-toggle="collapse" data-parent="#categories" href="#ili">ILI</a>
+    </div>
+    <div id="ili" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <% @ili_templates.each do |template| %>
+          <%= link_to template.title, template_path(template), :class=> 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle btn btn-primary" data-toggle="collapse" data-parent="#categories" href="#gun">Gun Violence</a>
+    </div>
+    <div id="gun" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <% @gun_templates.each do |template| %>
+          <%= link_to template.title, template_path(template), :class=> 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle btn btn-primary" data-toggle="collapse" data-parent="#categories" href="#obesity">Obesity Epidemic</a>
+    </div>
+    <div id="obesity" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <% @obesity_templates.each do |template| %>
+          <%= link_to template.title, template_path(template), :class=> 'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

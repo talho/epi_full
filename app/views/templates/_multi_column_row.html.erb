@@ -1,0 +1,5 @@
+<div class="multi-column-row">
+  <% component.components.each do |sub_component| %>
+    <div><%= render :partial => "component", :locals => {component: sub_component} %></div>
+  <% end %>
+</div>
