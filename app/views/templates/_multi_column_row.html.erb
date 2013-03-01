@@ -1,5 +1,8 @@
+<div class="component-cart-handle cart-show"></div>
 <div class="multi-column-row">
+  <div class="add-component vertical"></div>
   <% component.components.each do |sub_component| %>
-    <div><%= render :partial => "component", :locals => {component: sub_component} %></div>
+    <div class="component"><%= render :partial => "component", :locals => {component: sub_component} %></div>
+    <div class="add-component vertical"></div>
   <% end %>
 </div>

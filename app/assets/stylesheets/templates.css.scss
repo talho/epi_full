@@ -2,6 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.navbar-fixed-floating-bottom{
+  bottom: 0px;
+  margin: 0px;
+}
+
+.navbar-fixed-floating-bottom .navbar-inner{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom: 0px;
+}
+
+.tools-neutral .navbar-inner{
+  min-height: 10px;
+  padding: 0px 5px;
+}
+
+.tools-neutral .nav{
+  margin: 0px;
+}
+
+.tools-neutral .nav > li > a {
+  padding: 2px;
+}
+
+.instructions{
+  position: fixed;
+  top: 5px;
+}
+
+.component{
+  position: relative;
+  margin: 5px 0;
+}
+
+.component.cart-mode{
+  cursor: pointer;
+}
+
 div.multi-column-row{
   display: table;
   table-layout: fixed;
@@ -17,6 +55,61 @@ div.multi-column-row > div {
   padding: 5px;
 }
 
+.add-component{
+  cursor: pointer;
+  background: url("/assets/plus.png") no-repeat scroll 50% 50% #3075A5;
+  border: 1px solid #DDF;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 2px #5588DD inset;
+}
+
+div.multi-column-row > div.add-component.vertical {
+  background: url("/assets/plus.png") no-repeat scroll 50% 50% #3075A5;
+  display:none;
+  border: 1px solid #DDF;
+  border-radius: 5px;
+  width: 0.01%;
+}
+
+.add-component.horizontal {
+  height: 15px;
+}
+
 object{
   max-width: 800px;
+}
+
+.edit-show{
+  display:none;
+}
+
+.cart-show{
+  display:none;
+}
+
+.component.selected {
+  box-shadow: 0 0 10px 0 yellow inset, 0 0 10px 0 yellow;
+}
+
+.clickable-shim {
+  cursor: pointer;
+  background: none repeat scroll 0 0 black;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.component-cart-handle, .move-component-handle {
+  cursor: pointer;
+  background: none repeat scroll 0 0 #B0C0D0;
+  border: 1px solid #8080B0;
+  border-radius: 5px 5px 5px 5px;
+  bottom: 2px;
+  left: -23px;
+  position: absolute;
+  top: 2px;
+  width: 20px;
 }

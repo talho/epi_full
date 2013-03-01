@@ -1,6 +1,20 @@
 <title><%= @template.title %></title>
-<% @template.components.each do |component| %>
-  <div>
+
+
+<div id="instructions-cart" class="instructions cart-show alert alert-info">
+  Select items that you wish to use in your template by clicking on them.
+</div>
+<div id="instructions-edit" class="instructions edit-show alert alert-info">
+  Press the plus button to add components. To the left you can drag to reorder. You may also remove or edit components.
+</div>
+
+<div class="add-component horizontal edit-show"></div>
+<% @template.components.each.with_index do |component, i| %>
+  <div class="component">
+    <div class="move-component-handle edit-show"></div>
     <%= render :partial => "component", :locals => {component: component} %>
   </div>
+  <div class="add-component horizontal edit-show"></div>
 <% end %>
+
+<%= render 'tools' %>
