@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem "mongoid", ">= 3.0.19"
 gem "devise", ">= 2.2.3"
 gem "figaro", ">= 0.5.3"
+gem "httparty"
 
 group :development do
   gem "quiet_assets", ">= 1.0.1"

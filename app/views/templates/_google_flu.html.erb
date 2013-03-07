@@ -1,0 +1,8 @@
+<h3><%= component.title %></h3>
+<div style="position:relative;">
+  <div class="cart-show clickable-shim"></div>
+  <object type="image/svg+xml" data="<%= svg_path(chart_type: :line, model: :google_flu, loc_ids: component.loc_ids) %>">
+    <params name="src" value="<%= svg_path(chart_type: :line, model: :google_flu, loc_ids: component.loc_ids) %>">
+  </object>
+</div>
+<p><%= component.caption %><br/>Data Source: Google Flu Trends (http://www.google.org/flutrends)</p>

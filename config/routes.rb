@@ -10,5 +10,5 @@ Epi::Application.routes.draw do
   devise_for :users
   resources :users
 
-  match "svg/:chart_type/:model(.:format)" => "svg#chart", :defaults => {format: :svg}
+  match "svg/:chart_type/:model(.:format)" => "svg#chart", :as => :svg, :defaults => {format: :svg}
 end
