@@ -19,7 +19,7 @@ class GoogleFluData
   end
 
   def self.update
-    if (GoogleFluData.last.nil? || last_updated_at = GoogleFluData.last.updated_at.to_date) < Date.today
+    if (GoogleFluData.last.nil? || (last_updated_at = GoogleFluData.last.updated_at.to_date) < Date.today)
       res = HTTParty.get('http://www.google.org/flutrends/us/data.txt')
       data = res.body[667..-1]
 
