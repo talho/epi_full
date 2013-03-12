@@ -25,8 +25,8 @@ class GoogleFluData
 
       require 'csv'
       csv = CSV.new(data, {headers: true});
-
-      csv.to_a[[-2, -(Date.today - last_updated_at.to_date).to_i/7].min..-1].each do |row|
+      range_start = last_updated_at.nil? ? 0 : [-2, -(Date.today - last_updated_at.to_date).to_i/7].min
+      csv.to_a[range_start..-1].each do |row|
         GoogleFluData.where(:Date => row['Date']).first_or_create.update_attributes row.to_hash
       end
     end
