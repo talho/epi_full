@@ -27,12 +27,24 @@ namespace :deploy do
     run "ln -s #{shared_path}/sockets #{release_path}/tmp/sockets"
   end
 
-  task :setup_config, roles: :app do
+end
+
+namespace :setup do
+  task :config, roles: :app do
     run "mkdir #{shared_path}/sockets"
     upload "config/mongoid.yml", "#{shared_path}/mongoid.yml"
   end
+
+  task :requirements, roles: :app do
+    run "sudo apt-get install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev nodejs",
+        :shell => "#{rvm_install_shell}"
+  end
 end
 
-after "deploy:setup", "deploy:setup_config"
+before 'deploy:setup', 'setup:requirements'
+before 'deploy:setup', 'rvm:install_rvm'   # install RVM
+before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, or:
+
+after "deploy:setup", "setup:config"
 after 'deploy:finalize_update', 'deploy:set_symlinks'
 after "deploy:restart", "deploy:cleanup"

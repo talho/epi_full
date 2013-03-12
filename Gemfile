@@ -17,6 +17,8 @@ group :development do
   gem "better_errors", ">= 0.3.2"
   gem "binding_of_caller", ">= 0.6.8"
   gem "capistrano"
+  gem 'rvm-capistrano'
+  gem 'capistrano-unicorn'
 end
 
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
