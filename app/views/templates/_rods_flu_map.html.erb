@@ -1,0 +1,30 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyDXwrLGqC1SpFoU_qy3AO_pBBbRWPTW1wk&sensor=false"></script>
+<script type="text/javascript">
+  $(function() {
+    var mapOptions = {
+          center: new google.maps.LatLng(30.307096,-97.735062),
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        },
+        map = new google.maps.Map($('#map-<%= component.id %>')[0], mapOptions),
+        polygon = null;
+
+    <% component.codes.each do |code| %>
+    polygon = new google.maps.Polygon({
+      paths: [
+        <%= code.coords.map do |coord_group|
+          '[' + coord_group.map{ |coord| "new google.maps.LatLng(#{coord.last}, #{coord.first})"}.join(',') + ']'
+        end.join(',') %>
+      ],
+      strokeColor: "<%= component.intensity_color(code.zip) %>",
+      strokeOpacity: 1,
+      strokeWeight: 2,
+      fillColor: "<%= component.intensity_color(code.zip) %>",
+      fillOpacity: 0.5
+    });
+    polygon.setMap(map);
+    <% end %>
+  });
+</script>
+<h3>Rods Flu Intensity Map</h3>
+<div id="map-<%= component.id %>" style="height: 300px;"></div>
