@@ -1,5 +1,7 @@
 class RodsFluMap < Component
   field :intensities, type: Hash, default: {}
+  field :title
+  field :caption
 
   def zips
     self.intensities.keys
